@@ -1,6 +1,6 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1078,1596" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1078,998" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="60">
+    <scg:List x:TypeArguments="x:String" Capacity="33">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -33,10 +33,11 @@
       <x:String>UiPath.Shared.Activities</x:String>
       <x:String>System.Security</x:String>
       <x:String>System.ComponentModel</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="40">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="46">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -76,54 +77,74 @@
       <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
       <AssemblyReference>System.ComponentModel</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="580,1531" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="442,933" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="CityName" />
       <Variable x:TypeArguments="ui:UiElement" Name="GoogleEdge" />
+      <Variable x:TypeArguments="x:String" Name="Weather" />
+      <Variable x:TypeArguments="x:String" Name="Temperature" />
+      <Variable x:TypeArguments="x:String" Name="OutfitSuggestion" />
+      <Variable x:TypeArguments="x:String" Name="RainGear" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence sap:VirtualizedContainerService.HintSize="538,1441" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence sap:VirtualizedContainerService.HintSize="400,843" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="476,248" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="Enter a city name" Title="Get the weather">
+      <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="338,248" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="Enter a city name" Title="Get the weather">
         <ui:InputDialog.Result>
           <OutArgument x:TypeArguments="x:String">[CityName]</OutArgument>
         </ui:InputDialog.Result>
       </ui:InputDialog>
-      <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="476,97" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[CityName]" />
-      <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" ContinueOnError="False" DisplayName="Use Browser Chrome: Google" sap:VirtualizedContainerService.HintSize="476,894" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" IsIncognito="False" OpenMode="IfNotOpen" OutUiElement="[GoogleEdge]" ScopeGuid="f9a570fc-879c-45dc-b08b-304354d8b585" Version="V2" WindowResize="Maximize">
+      <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="338,97" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[CityName]" />
+      <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Always" ContinueOnError="False" DisplayName="Use Browser Chrome: Google" sap:VirtualizedContainerService.HintSize="338,61" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" IsIncognito="False" OpenMode="IfNotOpen" OutUiElement="[GoogleEdge]" ScopeGuid="f9a570fc-879c-45dc-b08b-304354d8b585" Version="V2" WindowResize="Maximize">
         <uix:NApplicationCard.Body>
           <ActivityAction x:TypeArguments="x:Object">
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="실행" sap:VirtualizedContainerService.HintSize="442,668" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <Sequence DisplayName="실행" sap:VirtualizedContainerService.HintSize="442,1083" sap2010:WorkflowViewState.IdRef="Sequence_3">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Sequence sap:VirtualizedContainerService.HintSize="400,578" sap2010:WorkflowViewState.IdRef="Sequence_4">
+              <Sequence sap:VirtualizedContainerService.HintSize="400,991" sap2010:WorkflowViewState.IdRef="Sequence_4">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'INPUT'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="338,227" sap2010:WorkflowViewState.IdRef="NTypeInto_1" InteractionMode="WindowMessages" ScopeIdentifier="f9a570fc-879c-45dc-b08b-304354d8b585" Text="[CityName + &quot; 날씨&quot;]" Version="V3">
+                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'INPUT'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="338,227" sap2010:WorkflowViewState.IdRef="NTypeInto_1" InteractionMode="HardwareEvents" ScopeIdentifier="f9a570fc-879c-45dc-b08b-304354d8b585" Text="[CityName + &quot; 날씨&quot;]" Version="V3">
                   <uix:NTypeInto.Target>
                     <uix:TargetAnchorable BrowserURL="https://www.google.com/?&amp;bih=1089&amp;biw=1903&amp;hl=ko" DesignTimeRectangle="558, 507, 403, 34" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'INPUT'" FullSelectorArgument="&lt;webctrl tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='INPUT' type='text' class='gLFyf gsfi' aaname='검색' /&gt;" Guid="8571a357-27ec-4ee0-9239-646a12f464de" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAZcAAAAmCAYAAAAIh9ZpAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACsSURBVHhe7dUxEQAxDMCwUgl/kPnlrwTqUZrMwGcBIGYuAOTMBYCcuQCQMxcAcuYCQM5cAMiZCwA5cwEgZy4A5O5cZuYvAHhjLgDkzAWAnLkAkDMXAHLmAkDOXADImQsAOXMBIGcuAOTMBYCcuQCQMxcAcuYCQM5cAMiZCwA5cwEgd+cCABVzASBnLgDkzAWAnLkAkDMXAHLmAkDOXADImQsAOXMBIGcuAMR2P0Z2mC/4ylaYAAAAAElFTkSuQmCC" InformativeScreenshot="7480e752aca29f82894f7813759d9564.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Google' /&gt;" SearchSteps="Selector, FuzzySelector, Image" Version="V1" Visibility="Interactive" />
                   </uix:NTypeInto.Target>
                 </uix:NTypeInto>
                 <uix:NKeyboardShortcuts ActivateBefore="True" ClickBeforeMode="None" DisplayName="Keyboard Shortcuts" sap:VirtualizedContainerService.HintSize="338,188" sap2010:WorkflowViewState.IdRef="NKeyboardShortcuts_1" Shortcuts="[d(hk)][k(enter)][u(hk)]" Version="V3" />
+                <uix:NGetText DisplayName="Get Text '19'" sap:VirtualizedContainerService.HintSize="338,166" sap2010:WorkflowViewState.IdRef="NGetText_1" ScopeIdentifier="f9a570fc-879c-45dc-b08b-304354d8b585" TextString="[Temperature]" Version="V3">
+                  <uix:NGetText.Target>
+                    <uix:TargetAnchorable BrowserURL="https://www.google.com/search?q=%EB%9F%B0%EB%8D%98+%EB%82%A0%EC%94%A8&amp;bih=1089&amp;biw=1920&amp;hl=ko&amp;sxsrf=ALiCzsbPNFT-uN_-ACZsdlocilY-uwSXbQ%3A1666166983883&amp;ei=x7BPY661NZakoATCloK4CA&amp;ved=0ahUKEwjutNfZ6-v6AhUWEogKHUKLAIcQ4dUDCA8&amp;uact=5&amp;oq=%EB%9F%B0%EB%8D%98+%EB%82%A0%EC%94%A8&amp;gs_lcp=Cgdnd3Mtd2l6EAMyDQgAEIAEEMQCEEYQgAIyBQgAEIAEMgYIABAHEB4yBggAEAcQHjIGCAAQBxAeMgYIABAHEB4yBggAEAcQHjIGCAAQBxAeMgYIABAHEB4yBggAEAcQHjoKCAAQRxDWBBCwAzoNCAAQRxDWBBCwAxDJAzoICAAQBxAeEA86BQgAEKIEOgwIIxAnEJ0CEEYQgAI6BAgAEEM6DQgAEIAEEIcCELEDEBQ6CAgAEIAEELEDOgsIABCABBCxAxCDAToHCAAQgAQQDToICAAQHhAPEA06BggAEB4QDUoECEEYAEoECEYYAFDHDVi2ImDuI2gEcAF4AIABogOIAagMkgEIMC4xMC40LTGYAQCgAQHIAQrAAQE&amp;sclient=gws-wiz" DesignTimeRectangle="308, 262, 53, 53" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'19'" FullSelectorArgument="&lt;webctrl id='wob_tm' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl id='wob_tm' tag='SPAN' type='' class='wob_t q8U8x' /&gt;" Guid="8e4a6857-d2b9-41e7-924e-5b23b36c80ac" ImageBase64="" InformativeScreenshot="95e3525782ce432827648a4b40a3fb35.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='런던 날씨 - Google 검색' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V1" Visibility="Interactive" />
+                  </uix:NGetText.Target>
+                </uix:NGetText>
+                <uix:NGetText DisplayName="Get Text '맑음'" sap:VirtualizedContainerService.HintSize="338,166" sap2010:WorkflowViewState.IdRef="NGetText_2" ScopeIdentifier="f9a570fc-879c-45dc-b08b-304354d8b585" TextString="[Weather]" Version="V3">
+                  <uix:NGetText.Target>
+                    <uix:TargetAnchorable BrowserURL="https://www.google.com/search?q=%EC%84%9C%EC%9A%B8+%EB%82%A0%EC%94%A8&amp;bih=1044&amp;biw=1587&amp;hl=ko&amp;sxsrf=ALiCzsbgi5vlUQKv2MgVl0NYgt7XJwHOcQ%3A1666163133855&amp;source=hp&amp;ei=vaFPY8eAMq-B1e8PkqqfqA8&amp;iflsig=AJiK0e8AAAAAY0-vzRD7pzsKk5qQkkQH2QJN708Y_RsE&amp;ved=0ahUKEwiH0-qt3ev6AhWvQPUHHRLVB_UQ4dUDCAo&amp;uact=5&amp;oq=%EC%84%9C%EC%9A%B8+%EB%82%A0%EC%94%A8&amp;gs_lcp=Cgdnd3Mtd2l6EAMyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEOgcIIxDqAhAnUBxY_7EpYPG3KWgFcAB4B4ABngGIAbMIkgEDMC44mAEAoAEBsAEK&amp;sclient=gws-wiz" DesignTimeRectangle="858, 308, 32, 17" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'맑음'" FullSelectorArgument="&lt;webctrl id='wob_dc' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl id='wob_dc' tag='SPAN' type='' class='' /&gt;" Guid="3a3e5718-c07d-4722-a732-8b8e573fcdd4" ImageBase64="" InformativeScreenshot="fd2fd8a027d0e29bd1ce2b7b7a2f8ac8.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='서울 날씨 - Google 검색' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V1" Visibility="Interactive" />
+                  </uix:NGetText.Target>
+                </uix:NGetText>
               </Sequence>
             </Sequence>
           </ActivityAction>
@@ -131,7 +152,174 @@
         <uix:NApplicationCard.TargetApp>
           <uix:TargetApp Area="0, 0, 0, 0" BrowserType="Chrome" IconBase64="iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAARHSURBVFhHvZddbBRVFMf7YrAq+OSbD6Kgb0qUUh60xq9VtA8k1EJrH1CsGIM+GLUmBA0kFi0WSMCHLcVCTMO2GmjFCiUFpH60sUjMEtIGLaAWama32w92dt2vOf7PndPd3M7sdmobf8k/M/fec8//zJ07s7NFXrEsawlUnclkmqEBaAxKisLS14yYKo6VafMHyR5A4hYoTh5BbAw6iLnLJc3cQZ7bkKQRSttp5w7mpqBdKKRY0noDE+7HxEuSZ94gVxA5l0n6wiDwYUwIyVyN9I0RMls/p4l33qDwi8+R4VtNxjOlFF7no/G3XyfzcBOlR/6UaB3kNHBYITbuyJU7zNOj12ly+/tkPL2KjKdKCgsxkx++p+bMhIvIuxIYuB0BjmWPn+qi0Atl7mYFFCp/nP45e0qy5IAH3w7nnsBAo8RkMY8cck3uVVMN2yWTDrwaxNYGFfGjpu12vnK3pKxIbRVFD+yj+DdHKd51DOf7KfJatRYztbueyLIkmw68UtqtQEeLjCl4s4Wef0xLyBqrWUuJ8/0S5SQx0EfhDeV0c/+n0pMfeDYrc5zfiYb2konufdNhPr7lZbKmpiQiP5YZlbPCwNPEKizm5a+WPoUVG6ZU9yKarLsna86PXGYiIhELB7zX8/I3S1uRuVpPqZ5blMx9d1FozUqKnzwuowsLvP1cwIC0FelffNkCWImjS4lSKRldWODdzwWMSVuR6r1bKyB9sUpG3Hnyo6hnnb2kXwi8DS4gKW1F6vQirYDM79tkxB03o3xq/VGz4gIS/2sBLecSMstmuoCwtBWOWxDcICPuuBnlU3u/YwXULdA34YVntQJGeh+kZGbum/CKkXEUcG7QsQfUJpzxGH6cNT/etZQeDayljuEeGfVOoC/pKGB0Qn81w9vPLyJtm1uxqxTrKab6jkdoZWCdkq/jFQrHxyVidm7GLarYa2rmG/0xGc0B70ouYAkq0Ub39O3Imk+rpvtdmkjM/ipO4iet7khcM2e1Oe+/icMd6vcAjYN2t82NqEFlX73kKKL8683Ue/28RDm5PH6NNnUGYDipmfNqxBKO5W9S5gxWYTk6tB1y4lqvo4BpVXz7FjVeaKH2yyfoy99O0mfBVnq1ZyuVBCrUeOmhOnrik7+yBXw/pH/XwisJz/vE3gadu2Q8yxdDnQ5zrypp3Uhlu392PPsMvHaKbQ7082f4RTskR/cfP+B21LiaFFJpWyUdCHZKlhzw+BWHW8VWB8uyDAH89aoxaoZo6097aFWbvcSzafOZD2gwMiyzcyD33zjcK3buIGCFWxEMb87Dg8doy3c7aE1nLa1ur1RX6uvYRLWnt6m9MBS5ItE6bI4LfEhsCiMrEZS58wa5eNkLX/lMUEQxJjZA//ljAHP5j+tOnLrfcy/IavA/Yn5xeIJjoSbM1R+1+YBki6H1SOyH+iEDSoj4nPv8iKlEDfYbblaKiv4FoeF/NqqvoEMAAAAASUVORK5CYII=" InformativeScreenshot="da53ec013c2dc8462ab999581654acee.jpg" Selector="&lt;html app='chrome.exe' title='Google' /&gt;" Url="https://www.google.com/?&amp;bih=1089&amp;biw=1903&amp;hl=ko" />
         </uix:NApplicationCard.TargetApp>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
       </uix:NApplicationCard>
+      <Flowchart sap:VirtualizedContainerService.HintSize="338,61" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
+            <av:Size x:Key="ShapeSize">60,75</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,126.5</av:PointCollection>
+            <x:Double x:Key="Height">755</x:Double>
+            <x:Double x:Key="Width">781</x:Double>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <Flowchart.StartNode>
+          <x:Reference>__ReferenceID6</x:Reference>
+        </Flowchart.StartNode>
+        <FlowDecision x:Name="__ReferenceID6" DisplayName="Flow Decision" sap:VirtualizedContainerService.HintSize="81,87" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
+          <FlowDecision.Condition>
+            <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="Weather.Contains(&quot;비&quot;) or Weather.Contains(&quot;소나기&quot;) or Weather.Contains(&quot;강우&quot;)" />
+          </FlowDecision.Condition>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <av:Point x:Key="ShapeLocation">259.5,126.5</av:Point>
+              <av:Size x:Key="ShapeSize">81,87</av:Size>
+              <av:PointCollection x:Key="TrueConnector">259.5,170 140,170 140,265</av:PointCollection>
+              <av:PointCollection x:Key="FalseConnector">340.5,170 460,170 460,376.5</av:PointCollection>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <FlowDecision.True>
+            <FlowStep x:Name="__ReferenceID0">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <av:Point x:Key="ShapeLocation">9,265</av:Point>
+                  <av:Size x:Key="ShapeSize">262,70</av:Size>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <Assign sap:VirtualizedContainerService.HintSize="262,70" sap2010:WorkflowViewState.IdRef="Assign_1">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[RainGear]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">우산을 챙기세요</InArgument>
+                </Assign.Value>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </Assign>
+            </FlowStep>
+          </FlowDecision.True>
+          <FlowDecision.False>
+            <FlowDecision x:Name="__ReferenceID1" DisplayName="Flow Decision" sap:VirtualizedContainerService.HintSize="81,87" sap2010:WorkflowViewState.IdRef="FlowDecision_2">
+              <FlowDecision.Condition>
+                <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="Convert.ToInt32(Temperature)&lt; 5" />
+              </FlowDecision.Condition>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <av:Point x:Key="ShapeLocation">419.5,376.5</av:Point>
+                  <av:Size x:Key="ShapeSize">81,87</av:Size>
+                  <av:PointCollection x:Key="TrueConnector">419.5,420 271,420</av:PointCollection>
+                  <av:PointCollection x:Key="FalseConnector">500.5,420 550,420 550,476.49999999999994</av:PointCollection>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <FlowDecision.True>
+                <FlowStep x:Name="__ReferenceID2">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <av:Point x:Key="ShapeLocation">9,385</av:Point>
+                      <av:Size x:Key="ShapeSize">262,70</av:Size>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Assign sap:VirtualizedContainerService.HintSize="262,70" sap2010:WorkflowViewState.IdRef="Assign_2">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[OutfitSuggestion]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">매우 춥습니다 따뜻하게 입으세요</InArgument>
+                    </Assign.Value>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </Assign>
+                </FlowStep>
+              </FlowDecision.True>
+              <FlowDecision.False>
+                <FlowDecision x:Name="__ReferenceID3" DisplayName="Flow Decision" sap:VirtualizedContainerService.HintSize="81,87" sap2010:WorkflowViewState.IdRef="FlowDecision_3">
+                  <FlowDecision.Condition>
+                    <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="Convert.ToInt32(Temperature) &gt; 27" />
+                  </FlowDecision.Condition>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <av:Point x:Key="ShapeLocation">509.5,476.49999999999994</av:Point>
+                      <av:Size x:Key="ShapeSize">81,87</av:Size>
+                      <av:PointCollection x:Key="TrueConnector">509.5,520 301,520</av:PointCollection>
+                      <av:PointCollection x:Key="FalseConnector">590.5,520 650,520 650,575</av:PointCollection>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <FlowDecision.True>
+                    <FlowStep x:Name="__ReferenceID4">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <av:Point x:Key="ShapeLocation">39,485</av:Point>
+                          <av:Size x:Key="ShapeSize">262,70</av:Size>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Assign sap:VirtualizedContainerService.HintSize="262,70" sap2010:WorkflowViewState.IdRef="Assign_3">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:String">[OutfitSuggestion]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:String">매우 덥습니다 얇게 입으세요</InArgument>
+                        </Assign.Value>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </Assign>
+                    </FlowStep>
+                  </FlowDecision.True>
+                  <FlowDecision.False>
+                    <FlowStep x:Name="__ReferenceID5">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <av:Point x:Key="ShapeLocation">519,575</av:Point>
+                          <av:Size x:Key="ShapeSize">262,70</av:Size>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Assign sap:VirtualizedContainerService.HintSize="262,70" sap2010:WorkflowViewState.IdRef="Assign_4">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:String">[OutfitSuggestion]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:String">날씨가 좋습니다</InArgument>
+                        </Assign.Value>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </Assign>
+                    </FlowStep>
+                  </FlowDecision.False>
+                </FlowDecision>
+              </FlowDecision.False>
+            </FlowDecision>
+          </FlowDecision.False>
+        </FlowDecision>
+        <x:Reference>__ReferenceID0</x:Reference>
+        <x:Reference>__ReferenceID1</x:Reference>
+        <x:Reference>__ReferenceID2</x:Reference>
+        <x:Reference>__ReferenceID3</x:Reference>
+        <x:Reference>__ReferenceID4</x:Reference>
+        <x:Reference>__ReferenceID5</x:Reference>
+      </Flowchart>
+      <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="338,94" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;기온은 &quot; + Temperature.ToString + &quot; 날씨는 &quot; + Weather + &quot; &quot; + OutfitSuggestion + &quot; &quot; + RainGear]" />
     </Sequence>
   </Sequence>
 </Activity>
