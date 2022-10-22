@@ -20623,15 +20623,15 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\CHOIDONGYOUNG\\.nuget\\packages\\": {}
+    "C:\\Users\\user\\.nuget\\packages\\": {}
   },
   "project": {
     "restore": {
       "projectUniqueName": "Robot3_TheAutomationChallenge",
       "projectName": "Robot3_TheAutomationChallenge",
-      "projectPath": "D:\\UiPath\\Robot3_TheAutomationChallenge\\.local",
-      "packagesPath": "C:\\Users\\CHOIDONGYOUNG\\.nuget\\packages\\",
-      "outputPath": "D:\\UiPath\\Robot3_TheAutomationChallenge\\.local"
+      "projectPath": "C:\\Users\\user\\Desktop\\study\\uipath\\Udemy\\CH05\\Robot3_TheAutomationChallenge\\.local",
+      "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\user\\Desktop\\study\\uipath\\Udemy\\CH05\\Robot3_TheAutomationChallenge\\.local"
     },
     "frameworks": {
       "net6.0-windows7.0": {
@@ -20662,7 +20662,7 @@
             "version": "[22.10.1, 22.10.1]"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Users\\CHOIDONGYOUNG\\AppData\\Local\\Programs\\UiPath\\Studio\\runtime.json"
+        "runtimeIdentifierGraphPath": "C:\\Users\\user\\AppData\\Local\\Programs\\UiPath\\Studio\\runtime.json"
       }
     },
     "runtimes": {
